@@ -3,261 +3,931 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Laxmana Kumar Chodapaneedi — Data Scientist. Healthcare ML, MLOps, big data pipelines, fraud detection, and RAG/LLMs." />
+  <meta name="description" content="Laxmana Kumar Chodapaneedi — Data Scientist | Healthcare ML, MLOps, Big Data, Fraud Detection, LLM/RAG." />
   <meta property="og:title" content="Laxmana Kumar Chodapaneedi — Data Scientist" />
   <meta property="og:description" content="Production ML: 85% AUC risk models, 10TB+ EHR pipelines, $2.5M+ fraud savings, 99.9% uptime." />
   <meta property="og:type" content="website" />
   <meta name="theme-color" content="#0b0f14" />
-  <title>Laxmana Kumar Chodapaneedi — Data Scientist</title>
+  <title>Laxmana Kumar Chodapaneedi — Portfolio</title>
 
+  <!-- Free font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
+    /* =========================
+       THEME
+    ========================== */
     :root{
-      --bg:#0b0f14;
+      --bg: #0b0f14;
+      --bg2:#0c1420;
+      --card:#0f1720;
       --text:#eaf1fb;
       --muted:#a9b7c6;
-      --line:rgba(255,255,255,.08);
+      --line:rgba(255,255,255,.10);
+      --line2:rgba(255,255,255,.06);
+      --shadow: 0 16px 40px rgba(0,0,0,.35);
+
       --accent:#7dd3fc;
       --accent2:#a78bfa;
       --good:#86efac;
-      --shadow:0 12px 36px rgba(0,0,0,.35);
+      --warn:#fbbf24;
+
       --radius:18px;
-      --max:1120px;
+      --radius2:14px;
+      --max: 1120px;
     }
+
+    [data-theme="light"]{
+      --bg:#f6f8fb;
+      --bg2:#eef2f7;
+      --card:#ffffff;
+      --text:#0b1220;
+      --muted:#4b5563;
+      --line:rgba(2,6,23,.10);
+      --line2:rgba(2,6,23,.06);
+      --shadow: 0 16px 40px rgba(2,6,23,.12);
+    }
+
     *{box-sizing:border-box}
+    html,body{height:100%}
     body{
       margin:0;
-      font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
       color:var(--text);
       background:
         radial-gradient(1200px 800px at 12% 8%, rgba(125,211,252,.10), transparent 60%),
         radial-gradient(900px 700px at 88% 18%, rgba(167,139,250,.10), transparent 55%),
+        radial-gradient(1000px 700px at 55% 95%, rgba(125,211,252,.06), transparent 60%),
         var(--bg);
       line-height:1.6;
     }
-    a{color:inherit;text-decoration:none}
-    .wrap{max-width:var(--max);margin:auto;padding:28px 18px 70px}
 
+    a{color:inherit;text-decoration:none}
+    a:hover{opacity:.94}
+    .wrap{max-width:var(--max); margin:0 auto; padding: 18px 18px 80px;}
+    .sr-only{
+      position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+      clip:rect(0,0,0,0);white-space:nowrap;border:0;
+    }
+
+    /* =========================
+       NAV
+    ========================== */
+    header{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(12px);
+      background: linear-gradient(180deg, rgba(11,15,20,.86), rgba(11,15,20,.62));
+      border-bottom: 1px solid var(--line2);
+    }
+    [data-theme="light"] header{
+      background: linear-gradient(180deg, rgba(246,248,251,.92), rgba(246,248,251,.70));
+    }
     .nav{
-      position:sticky;top:0;z-index:50;
-      backdrop-filter:blur(10px);
-      background:rgba(11,15,20,.85);
-      border-bottom:1px solid rgba(255,255,255,.04)
+      max-width:var(--max); margin:0 auto; padding: 14px 18px;
+      display:flex; align-items:center; justify-content:space-between; gap:14px;
     }
-    .navInner{
-      max-width:var(--max);
-      margin:auto;
-      padding:16px 18px;
-      display:flex;
-      justify-content:space-between;
-      align-items:center
-    }
-    .brand{font-weight:800;display:flex;gap:10px;align-items:center}
+    .brand{display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.2px;}
     .dot{
       width:12px;height:12px;border-radius:50%;
-      background:linear-gradient(135deg,var(--accent),var(--accent2))
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: 0 0 0 6px rgba(125,211,252,.07);
     }
-    .nav a{
+    .navlinks{display:flex; align-items:center; gap:8px; flex-wrap:wrap; justify-content:flex-end;}
+    .pill{
       padding:10px 12px;
       border-radius:999px;
       border:1px solid var(--line);
-      margin-left:6px;
-      font-size:14px
+      background: rgba(255,255,255,.03);
+      font-size:14px;
+      transition: transform .15s ease, background .15s ease, border-color .15s ease;
     }
+    [data-theme="light"] .pill{ background: rgba(2,6,23,.03); }
+    .pill:hover{transform: translateY(-1px); border-color: rgba(255,255,255,.20); background: rgba(255,255,255,.06);}
+
+    .iconBtn{
+      display:inline-flex; align-items:center; justify-content:center;
+      width:40px; height:40px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      transition: transform .15s ease, background .15s ease, border-color .15s ease;
+      cursor:pointer;
+    }
+    [data-theme="light"] .iconBtn{ background: rgba(2,6,23,.03); }
+    .iconBtn:hover{transform: translateY(-1px); border-color: rgba(255,255,255,.22); background: rgba(255,255,255,.06);}
+
+    /* =========================
+       HERO
+    ========================== */
+    .hero{
+      margin-top:18px;
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:16px;
+      align-items:stretch;
+    }
+    @media (max-width: 900px){ .hero{grid-template-columns:1fr} }
 
     .card{
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      background:rgba(255,255,255,.03);
-      box-shadow:var(--shadow)
+      border:1px solid var(--line2);
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
     }
-
-    .hero{
-      display:grid;
-      grid-template-columns:1.3fr .7fr;
-      gap:18px;
-      margin-top:20px
+    [data-theme="light"] .card{
+      background: linear-gradient(180deg, rgba(255,255,255,.95), rgba(255,255,255,.88));
     }
-    @media(max-width:900px){.hero{grid-template-columns:1fr}}
+    .heroMain{padding:28px}
+    .kicker{
+      display:inline-flex; align-items:center; gap:10px;
+      font-size:13px; color:var(--muted);
+      padding:8px 12px; border-radius:999px;
+      border:1px solid var(--line2);
+      background: rgba(255,255,255,.03);
+    }
+    .kicker strong{color:var(--text); font-weight:800;}
+    h1{
+      margin:14px 0 10px;
+      font-size:48px; line-height:1.06; letter-spacing:-1.2px;
+    }
+    @media (max-width: 520px){ h1{font-size:38px} }
+    .subtitle{color:var(--muted); font-size:16px; max-width: 70ch; margin:0;}
+    .subtitle b{color:var(--text); font-weight:800;}
 
-    h1{font-size:46px;line-height:1.1;margin:16px 0}
-    h2{font-size:18px;margin:0}
-    .subtitle{color:var(--muted);max-width:75ch}
-
+    .ctaRow{display:flex; gap:10px; flex-wrap:wrap; margin-top:18px}
     .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
       padding:12px 14px;
-      border-radius:12px;
+      border-radius: 12px;
       border:1px solid var(--line);
-      background:rgba(255,255,255,.04);
-      font-weight:700;
-      margin-right:8px;
-      display:inline-block
+      background: rgba(255,255,255,.04);
+      font-weight:800;
+      font-size:14px;
+      transition: transform .15s ease, background .15s ease, border-color .15s ease;
     }
+    [data-theme="light"] .btn{ background: rgba(2,6,23,.03); }
+    .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.07); border-color: rgba(255,255,255,.22);}
     .btnPrimary{
-      background:linear-gradient(135deg,var(--accent),var(--accent2));
-      color:#061018;border:none
+      border:none;
+      background: linear-gradient(135deg, rgba(125,211,252,.95), rgba(167,139,250,.95));
+      color:#061018;
+      box-shadow: 0 12px 30px rgba(125,211,252,.14);
+    }
+    .btnPrimary:hover{opacity:.97}
+    .btnGhost{background: rgba(255,255,255,.02);}
+
+    .heroSide{padding:22px; display:flex; flex-direction:column; gap:12px;}
+    .stats{display:grid; grid-template-columns:1fr 1fr; gap:10px;}
+    .stat{
+      padding:14px; border-radius: var(--radius2);
+      border:1px solid var(--line2);
+      background: rgba(255,255,255,.03);
+    }
+    [data-theme="light"] .stat{ background: rgba(2,6,23,.02); }
+    .stat .num{font-weight:900; font-size:18px;}
+    .stat .lab{color:var(--muted); font-size:12px; margin-top:4px;}
+    .chips{display:flex; gap:8px; flex-wrap:wrap;}
+    .chip{
+      font-size:12px; color:var(--muted);
+      padding:7px 10px;
+      border-radius:999px;
+      border:1px solid var(--line2);
+      background: rgba(255,255,255,.02);
+    }
+    [data-theme="light"] .chip{ background: rgba(2,6,23,.02); }
+
+    .portrait{
+      border-radius: var(--radius);
+      overflow:hidden;
+      border:1px solid var(--line2);
+      background:
+        radial-gradient(400px 240px at 30% 20%, rgba(125,211,252,.22), transparent 60%),
+        radial-gradient(420px 260px at 70% 30%, rgba(167,139,250,.22), transparent 60%),
+        rgba(255,255,255,.03);
+      min-height: 210px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      position:relative;
+    }
+    .portrait svg{opacity:.92}
+    .portrait small{
+      position:absolute; bottom:10px; left:12px;
+      font-size:12px; color:var(--muted);
     }
 
-    .stats{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-    .stat{padding:14px;border-radius:14px;border:1px solid var(--line)}
-    .num{font-weight:900}
-    .lab{font-size:12px;color:var(--muted)}
+    /* =========================
+       SECTIONS
+    ========================== */
+    .section{margin-top:30px}
+    .sectionHead{
+      display:flex; justify-content:space-between; align-items:flex-end;
+      gap:12px; flex-wrap:wrap;
+      margin: 8px 0 12px;
+    }
+    h2{margin:0; font-size:18px; letter-spacing:.2px;}
+    .hint{color:var(--muted); font-size:13px;}
 
-    .section{margin-top:32px}
-    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
-    .col-6{grid-column:span 6}
-    .col-12{grid-column:span 12}
-    @media(max-width:900px){.col-6{grid-column:span 12}}
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap:14px;
+    }
+    .col-12{grid-column: span 12}
+    .col-7{grid-column: span 7}
+    .col-5{grid-column: span 5}
+    .col-6{grid-column: span 6}
+    @media (max-width: 900px){
+      .col-7,.col-5,.col-6{grid-column: span 12}
+    }
 
-    .proj{padding:18px;border-radius:var(--radius);border:1px solid var(--line)}
-    .projTitle{font-weight:800}
-    ul{color:var(--muted)}
-    li{margin:6px 0}
+    .panel{padding:18px}
+    .panel h3{margin:0 0 8px; font-size:16px}
+    .panel p{margin:0; color:var(--muted); font-size:14px}
 
-    .footer{
-      margin-top:40px;
-      padding-top:18px;
-      border-top:1px solid var(--line);
-      color:var(--muted);
+    /* =========================
+       EXPERIENCE (tabs)
+    ========================== */
+    .xpWrap{padding:18px}
+    .xpGrid{
+      display:grid;
+      grid-template-columns: 260px 1fr;
+      gap:14px;
+      align-items:stretch;
+    }
+    @media (max-width: 900px){
+      .xpGrid{grid-template-columns: 1fr}
+    }
+
+    .xpList{
+      border:1px solid var(--line2);
+      border-radius: var(--radius2);
+      background: rgba(255,255,255,.02);
+      padding:10px;
+    }
+    [data-theme="light"] .xpList{ background: rgba(2,6,23,.02); }
+
+    .xpItem{
+      width:100%;
+      text-align:left;
+      border:1px solid transparent;
+      background: transparent;
+      color: var(--text);
+      padding:12px 12px;
+      border-radius: 12px;
+      cursor:pointer;
+      transition: background .15s ease, border-color .15s ease, transform .15s ease;
       display:flex;
-      justify-content:space-between;
-      font-size:13px
+      flex-direction:column;
+      gap:2px;
+    }
+    .xpItem:hover{background: rgba(255,255,255,.04); transform: translateY(-1px);}
+    [data-theme="light"] .xpItem:hover{ background: rgba(2,6,23,.03); }
+    .xpItem small{color:var(--muted); font-size:12px}
+    .xpItem.active{
+      border-color: rgba(125,211,252,.25);
+      background: rgba(125,211,252,.06);
+    }
+    [data-theme="light"] .xpItem.active{
+      background: rgba(125,211,252,.10);
+    }
+
+    .xpDetail{
+      border:1px solid var(--line2);
+      border-radius: var(--radius2);
+      background: rgba(255,255,255,.02);
+      padding:16px;
+      min-height: 250px;
+    }
+    [data-theme="light"] .xpDetail{ background: rgba(2,6,23,.02); }
+
+    .xpTop{
+      display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;
+      align-items:flex-start;
+    }
+    .xpRole{font-weight:900; font-size:16px; margin:0}
+    .xpMeta{color:var(--muted); font-size:13px}
+    .bullets{margin:10px 0 0; padding-left:18px; color:var(--muted); font-size:14px}
+    .bullets li{margin:6px 0}
+    .tags{display:flex; gap:8px; flex-wrap:wrap; margin-top:12px}
+    .tag{
+      font-size:12px;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(125,211,252,.18);
+      background: rgba(125,211,252,.06);
+      color: #bfe9ff;
+    }
+    .tag.alt{
+      border-color: rgba(167,139,250,.18);
+      background: rgba(167,139,250,.06);
+      color:#d9ccff;
+    }
+    .tag.good{
+      border-color: rgba(134,239,172,.18);
+      background: rgba(134,239,172,.06);
+      color:#ccfbe2;
+    }
+
+    /* =========================
+       PROJECTS
+    ========================== */
+    .proj{
+      padding:16px;
+      border:1px solid var(--line2);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.02);
+      transition: transform .18s ease, background .18s ease, border-color .18s ease;
+      overflow:hidden;
+    }
+    [data-theme="light"] .proj{ background: rgba(2,6,23,.02); }
+    .proj:hover{transform: translateY(-2px); border-color: rgba(255,255,255,.18); background: rgba(255,255,255,.04);}
+    [data-theme="light"] .proj:hover{ background: rgba(2,6,23,.03); }
+
+    .projMedia{
+      border-radius: 14px;
+      border:1px solid var(--line2);
+      background:
+        radial-gradient(280px 160px at 30% 20%, rgba(125,211,252,.25), transparent 60%),
+        radial-gradient(320px 190px at 70% 40%, rgba(167,139,250,.22), transparent 60%),
+        rgba(255,255,255,.02);
+      height: 150px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      position:relative;
+      overflow:hidden;
+    }
+    .projMedia .label{
+      position:absolute; bottom:10px; left:12px;
+      font-size:12px; color:var(--muted);
+      background: rgba(0,0,0,.18);
+      padding:5px 8px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.10);
+    }
+    [data-theme="light"] .projMedia .label{
+      background: rgba(255,255,255,.70);
+      border-color: rgba(2,6,23,.10);
+    }
+    .projTitle{margin:12px 0 6px; font-size:16px; font-weight:900;}
+    .projDesc{margin:0; color:var(--muted); font-size:14px}
+    .projLinks{display:flex; gap:10px; flex-wrap:wrap; margin-top:12px}
+
+    /* =========================
+       ACHIEVEMENTS
+    ========================== */
+    .ach{
+      padding:16px;
+      border:1px solid var(--line2);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.02);
+    }
+    [data-theme="light"] .ach{ background: rgba(2,6,23,.02); }
+    .ach h3{margin:0 0 8px; font-size:16px}
+    .ach ul{margin:0; padding-left:18px; color:var(--muted); font-size:14px}
+    .ach li{margin:6px 0}
+
+    /* =========================
+       FOOTER / REVEAL
+    ========================== */
+    .footer{
+      margin-top:34px;
+      display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;
+      color:var(--muted);
+      font-size:13px;
+      padding-top:18px;
+      border-top: 1px solid var(--line2);
+    }
+
+    .reveal{opacity:0; transform: translateY(10px); transition: opacity .65s ease, transform .65s ease}
+    .reveal.visible{opacity:1; transform:none}
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce){
+      .reveal{opacity:1; transform:none; transition:none}
+      .pill,.btn,.iconBtn,.proj,.xpItem{transition:none}
     }
   </style>
 </head>
 
 <body>
-<header class="nav">
-  <div class="navInner">
-    <div class="brand"><span class="dot"></span>Laxmana Kumar</div>
-    <nav>
-      <a href="#projects">Projects</a>
-      <a href="#experience">Experience</a>
-      <a href="#education">Education</a>
-      <a href="#contact">Contact</a>
-      <a href="https://1drv.ms/b/c/11b94d5d9e41e7f0/IQDCdAsrL2trTbo2wiQISCQcAb0jMHSlUX0-EwEHRAmKjSM?e=Hqa4nu" target="_blank">Resume</a>
-    </nav>
-  </div>
-</header>
+  <header>
+    <div class="nav">
+      <div class="brand">
+        <span class="dot" aria-hidden="true"></span>
+        <span>Laxmana Kumar</span>
+      </div>
 
-<main class="wrap">
+      <nav class="navlinks" aria-label="Primary navigation">
+        <a class="pill" href="#about">About</a>
+        <a class="pill" href="#experience">Experience</a>
+        <a class="pill" href="#education">Education</a>
+        <a class="pill" href="#projects">Projects</a>
+        <a class="pill" href="#achievements">Achievements</a>
+        <a class="pill" href="#contact">Contact</a>
 
-<section class="hero">
-  <div class="card" style="padding:28px">
-    <h1>Data Scientist building production ML.</h1>
-    <p class="subtitle">
-      Healthcare & financial machine learning with real-world impact —
-      <b>85% AUC</b>, <b>10TB+ EHR pipelines</b>, <b>$2.5M+ fraud savings</b>,
-      <b>99.9% uptime</b>.
-    </p>
-    <br>
-    <a class="btn btnPrimary" href="#projects">View Projects</a>
-    <a class="btn" href="https://www.linkedin.com/in/kumarchoda/" target="_blank">LinkedIn</a>
-    <a class="btn" href="https://github.com/laxman1400" target="_blank">GitHub</a>
-    <a class="btn" href="https://1drv.ms/b/c/11b94d5d9e41e7f0/IQDCdAsrL2trTbo2wiQISCQcAb0jMHSlUX0-EwEHRAmKjSM?e=Hqa4nu" target="_blank">Resume</a>
-  </div>
-
-  <div class="card" style="padding:22px">
-    <div class="stats">
-      <div class="stat"><div class="num">85% AUC</div><div class="lab">Risk models</div></div>
-      <div class="stat"><div class="num">$2.5M+</div><div class="lab">Fraud savings</div></div>
-      <div class="stat"><div class="num">10TB+/wk</div><div class="lab">EHR pipelines</div></div>
-      <div class="stat"><div class="num">99.9%</div><div class="lab">API uptime</div></div>
+        <button class="iconBtn" id="themeToggle" type="button" aria-label="Toggle theme">
+          <!-- moon/sun icon -->
+          <svg id="themeIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M21 13.3A8.2 8.2 0 0 1 10.7 3a7.2 7.2 0 1 0 10.3 10.3Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </nav>
     </div>
-  </div>
-</section>
+  </header>
 
-<section class="section" id="projects">
-  <h2>Projects</h2>
-  <div class="grid">
-    <div class="proj col-6">
-      <div class="projTitle">Healthcare Risk Stratification</div>
-      <ul>
-        <li>ML models for readmission & chronic disease prediction</li>
-        <li>10TB+ EHR data processed weekly</li>
-        <li>85% AUC (+25% vs baseline)</li>
-      </ul>
-    </div>
+  <main class="wrap">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="card heroMain reveal">
+        <div class="kicker">
+          <strong>Data Scientist</strong> · Healthcare ML · MLOps · Big Data · LLM/RAG
+        </div>
 
-    <div class="proj col-6">
-      <div class="projTitle">Real-time Fraud Detection</div>
-      <ul>
-        <li>5M+ transactions/day</li>
-        <li>$2.5M+ annual savings</li>
-        <li>22% false-positive reduction</li>
-      </ul>
-    </div>
+        <h1>Production ML that moves metrics.</h1>
 
-    <div class="proj col-6">
-      <div class="projTitle">Snowflake Migration</div>
-      <ul>
-        <li>On-prem SQL → Snowflake</li>
-        <li>Latency reduced from 4h → 15m</li>
-      </ul>
-    </div>
+        <p class="subtitle">
+          I build <b>scalable ML systems</b> across healthcare and finance — from <b>10TB+ EHR processing</b> to
+          <b>real-time fraud detection</b> — delivering <b>85% AUC</b>, <b>99.9% uptime</b>, and
+          <b>$2.5M+ annual savings</b>.
+        </p>
 
-    <div class="proj col-6">
-      <div class="projTitle">LLM / RAG for Clinical Notes</div>
-      <ul>
-        <li>LangChain + Pinecone + GPT-4</li>
-        <li>40–50% manual review reduction</li>
-      </ul>
-    </div>
-  </div>
-</section>
+        <div class="ctaRow">
+          <a class="btn btnPrimary" href="#projects">View Projects</a>
+          <a class="btn btnGhost" href="https://www.linkedin.com/in/kumarchoda/" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn btnGhost" href="https://github.com/laxman1400" target="_blank" rel="noopener">GitHub</a>
+          <a class="btn btnGhost" href="https://1drv.ms/b/c/11b94d5d9e41e7f0/IQDCdAsrL2trTbo2wiQISCQcAb0jMHSlUX0-EwEHRAmKjSM?e=Hqa4nu" target="_blank" rel="noopener">Resume</a>
+        </div>
 
-<section class="section" id="experience">
-  <h2>Experience</h2>
-  <div class="card" style="padding:20px">
-    <b>Data Scientist — Texas Health Resources</b> (2024–Present)
-    <ul>
-      <li>Built ML pipelines processing 10TB+ EHR data weekly</li>
-      <li>Automated MLOps with MLflow, Docker, Jenkins, SageMaker</li>
-      <li>Improved patient outcomes & reduced ER wait times by 20%</li>
-    </ul>
-    <br>
-    <b>Data Analyst — HDFC Bank</b> (2020–2022)
-    <ul>
-      <li>Credit risk & fraud models reduced defaults by 25%</li>
-      <li>Forecasting improved resource allocation by 30%</li>
-    </ul>
-  </div>
-</section>
+        <p class="hint" style="margin-top:14px">
+          Email: <a href="mailto:laxmanakumar.ds@gmail.com" style="text-decoration:underline; text-underline-offset:3px;">laxmanakumar.ds@gmail.com</a>
+          · Phone: +1 (469) 278-5616 · DFW, TX
+        </p>
+      </div>
 
-<section class="section" id="education">
-  <h2>Education</h2>
-  <div class="card" style="padding:20px">
-    <b>M.S. Data Science — Wichita State University</b><br>
-    Logistics optimization, MLOps fraud pipeline, price intelligence systems
-    <br><br>
-    <b>B.E. Electronics & Communications — JNTUH</b>
-  </div>
-</section>
+      <aside class="card heroSide reveal">
+        <div class="portrait" aria-label="Profile graphic">
+          <!-- classy inline SVG placeholder (no external assets needed) -->
+          <svg width="220" height="220" viewBox="0 0 220 220" role="img" aria-label="Abstract profile graphic">
+            <defs>
+              <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="currentColor" stop-opacity=".95"/>
+                <stop offset="1" stop-color="currentColor" stop-opacity=".35"/>
+              </linearGradient>
+            </defs>
+            <circle cx="110" cy="110" r="84" fill="none" stroke="currentColor" stroke-opacity=".22" stroke-width="18"/>
+            <path d="M110 60c-18 0-32 14-32 32 0 15 10 28 24 31-24 8-40 25-40 45h96c0-20-16-37-40-45 14-3 24-16 24-31 0-18-14-32-32-32Z"
+                  fill="url(#g)" opacity=".85"/>
+          </svg>
+          <small>Replace with your photo anytime</small>
+        </div>
 
-<section class="section" id="contact">
-  <h2>Contact</h2>
-  <div class="card" style="padding:20px">
-    📧 laxmanakumar.ds@gmail.com<br>
-    📍 Dallas–Fort Worth<br><br>
-    <a class="btn btnPrimary" href="mailto:laxmanakumar.ds@gmail.com">Email Me</a>
-    <a class="btn" href="https://www.linkedin.com/in/kumarchoda/" target="_blank">LinkedIn</a>
-    <a class="btn" href="https://github.com/laxman1400" target="_blank">GitHub</a>
-    <a class="btn" href="https://1drv.ms/b/c/11b94d5d9e41e7f0/IQDCdAsrL2trTbo2wiQISCQcAb0jMHSlUX0-EwEHRAmKjSM?e=Hqa4nu" target="_blank">Resume</a>
-  </div>
-</section>
+        <div class="stats" aria-label="Key impact metrics">
+          <div class="stat">
+            <div class="num">85% AUC</div>
+            <div class="lab">Risk prediction (+25% vs baseline)</div>
+          </div>
+          <div class="stat">
+            <div class="num">$2.5M+</div>
+            <div class="lab">Annual fraud savings</div>
+          </div>
+          <div class="stat">
+            <div class="num">10TB+/wk</div>
+            <div class="lab">EHR pipelines processed</div>
+          </div>
+          <div class="stat">
+            <div class="num">99.9%</div>
+            <div class="lab">Patient-facing API uptime</div>
+          </div>
+        </div>
 
-<footer class="footer">
-  <div>© <span id="year"></span> Laxmana Kumar Chodapaneedi</div>
-  <div>Built with GitHub Pages</div>
-</footer>
+        <div class="chips" style="margin-top:4px" aria-label="Core tools">
+          <span class="chip">Python · PySpark</span>
+          <span class="chip">Databricks · Spark</span>
+          <span class="chip">Snowflake</span>
+          <span class="chip">Airflow</span>
+          <span class="chip">MLflow · Docker</span>
+          <span class="chip">Jenkins · CI/CD</span>
+          <span class="chip">SageMaker</span>
+          <span class="chip">RAG · LangChain</span>
+        </div>
+      </aside>
+    </section>
 
-</main>
+    <!-- ABOUT -->
+    <section class="section" id="about">
+      <div class="sectionHead">
+        <h2>About</h2>
+        <div class="hint">Short, high-signal story — what you do and why it matters.</div>
+      </div>
 
-<script>
-  document.getElementById("year").textContent = new Date().getFullYear();
-</script>
+      <div class="grid">
+        <div class="card panel col-7 reveal">
+          <h3>Hi, I’m Laxmana.</h3>
+          <p>
+            I’m a Data Scientist focused on <b>production ML</b>, <b>data pipelines at scale</b>, and <b>decision systems</b>.
+            I’ve delivered end-to-end solutions in healthcare and finance — from risk stratification and readmissions modeling,
+            to real-time claims fraud detection and LLM/RAG systems for clinical notes.
+          </p>
+          <div class="ctaRow" style="margin-top:14px">
+            <a class="btn btnPrimary" href="https://1drv.ms/b/c/11b94d5d9e41e7f0/IQDCdAsrL2trTbo2wiQISCQcAb0jMHSlUX0-EwEHRAmKjSM?e=Hqa4nu" target="_blank" rel="noopener">View Resume</a>
+            <a class="btn" href="#contact">Get In Touch</a>
+          </div>
+        </div>
+
+        <div class="card panel col-5 reveal">
+          <h3>What I’m best at</h3>
+          <ul class="bullets" style="margin-top:10px">
+            <li>Designing ML systems with <b>monitoring, retraining</b>, and clear SLAs.</li>
+            <li>Scaling pipelines across Spark/Databricks to support large data volumes.</li>
+            <li>Turning messy data into <b>trusted, decision-ready</b> insights.</li>
+            <li>Experimentation: multivariate A/B testing (frequentist + Bayesian).</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section class="section" id="experience">
+      <div class="sectionHead">
+        <h2>Experience</h2>
+        <div class="hint">Select a company to view impact and scope.</div>
+      </div>
+
+      <div class="card xpWrap reveal">
+        <div class="xpGrid">
+          <div class="xpList" role="tablist" aria-label="Experience list">
+            <button class="xpItem active" type="button" role="tab" aria-selected="true" data-xp="thr">
+              <span style="font-weight:900">Texas Health Resources</span>
+              <small>Data Scientist · Jun 2024 — Present</small>
+            </button>
+            <button class="xpItem" type="button" role="tab" aria-selected="false" data-xp="hdfc">
+              <span style="font-weight:900">HDFC Bank</span>
+              <small>Data Analyst · Jun 2020 — Aug 2022</small>
+            </button>
+          </div>
+
+          <div class="xpDetail" id="xpDetail" role="tabpanel" aria-live="polite">
+            <!-- filled by JS -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section class="section" id="education">
+      <div class="sectionHead">
+        <h2>Education</h2>
+        <div class="hint">Academic foundation + applied projects.</div>
+      </div>
+
+      <div class="grid">
+        <div class="card panel col-12 reveal">
+          <div class="xpTop">
+            <div>
+              <p class="xpRole" style="margin:0">M.S. in Data Science — Wichita State University</p>
+              <div class="xpMeta">Wichita, KS · Aug 2022 — May 2024</div>
+            </div>
+            <div class="xpMeta">Optimization · ML · Analytics</div>
+          </div>
+          <ul class="bullets">
+            <li><b>Ferrellgas Logistics Optimization:</b> k-medoids + VRP (OR-Tools) with double-digit reductions in distance and labor hours; Power BI dashboards.</li>
+            <li><b>E-Commerce Price Tracker:</b> automated scraping + daily price intelligence and price-drop alerts.</li>
+            <li><b>End-to-End MLOps Fraud Pipeline:</b> streaming ingestion + containerized deployment with <b>&lt;200ms</b> scoring latency.</li>
+            <li><b>Food Insecurity Analysis:</b> ML analysis of determinants across urban vs rural areas.</li>
+          </ul>
+          <div class="tags">
+            <span class="tag">OR-Tools</span>
+            <span class="tag alt">Power BI</span>
+            <span class="tag">MLOps</span>
+            <span class="tag alt">Streaming</span>
+          </div>
+
+          <div style="height:12px"></div>
+
+          <div class="xpTop">
+            <div>
+              <p class="xpRole" style="margin:0">B.E. in Electronics & Communications Engineering — JNTUH</p>
+              <div class="xpMeta">India</div>
+            </div>
+            <div class="xpMeta">Systems · Math · Engineering Fundamentals</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="section" id="projects">
+      <div class="sectionHead">
+        <h2>Projects</h2>
+        <div class="hint">Built for impact: problem → approach → measurable result.</div>
+      </div>
+
+      <div class="grid">
+        <article class="proj col-6 reveal">
+          <div class="projMedia" aria-hidden="true">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none">
+              <path d="M4 18V6m0 12h16M8 15l3-3 3 2 4-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity=".85"/>
+            </svg>
+            <div class="label">Healthcare ML</div>
+          </div>
+          <h3 class="projTitle">Healthcare Risk Stratification Platform</h3>
+          <p class="projDesc">
+            Built and deployed ML models for readmission prediction and chronic disease management over large-scale EHR data.
+            Achieved <b>85% AUC</b> (+25% vs baseline) and improved prediction accuracy by <b>18%</b>.
+          </p>
+          <div class="projLinks">
+            <a class="btn" href="#contact">Request details</a>
+            <a class="btn btnGhost" href="https://1drv.ms/b/c/11b94d5d9e41e7f0/IQDCdAsrL2trTbo2wiQISCQcAb0jMHSlUX0-EwEHRAmKjSM?e=Hqa4nu" target="_blank" rel="noopener">Resume evidence</a>
+          </div>
+        </article>
+
+        <article class="proj col-6 reveal">
+          <div class="projMedia" aria-hidden="true">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none">
+              <path d="M12 3l7 4v10l-7 4-7-4V7l7-4Z" stroke="currentColor" stroke-width="2" opacity=".85"/>
+              <path d="M9 12h6" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity=".85"/>
+            </svg>
+            <div class="label">Fraud Detection</div>
+          </div>
+          <h3 class="projTitle">Real-time Claims Fraud Detection</h3>
+          <p class="projDesc">
+            Ensemble models (XGBoost + Autoencoders) processing <b>5M+ transactions/day</b>.
+            Delivered <b>$2.5M+ annual savings</b> and reduced false positives by <b>22%</b>.
+          </p>
+          <div class="projLinks">
+            <a class="btn" href="#contact">Request details</a>
+            <a class="btn btnGhost" href="https://github.com/laxman1400" target="_blank" rel="noopener">GitHub</a>
+          </div>
+        </article>
+
+        <article class="proj col-6 reveal">
+          <div class="projMedia" aria-hidden="true">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none">
+              <path d="M4 7h16M6 7v12m12-12v12M4 19h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity=".85"/>
+              <path d="M9 11h6M9 15h6" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity=".85"/>
+            </svg>
+            <div class="label">Data Platform</div>
+          </div>
+          <h3 class="projTitle">SQL → Snowflake Migration & Optimization</h3>
+          <p class="projDesc">
+            Migrated legacy SQL workloads to Snowflake with clustering keys + materialized views.
+            Reduced reporting latency from <b>4 hours</b> to <b>15 minutes</b>.
+          </p>
+          <div class="projLinks">
+            <a class="btn" href="#contact">Request details</a>
+          </div>
+        </article>
+
+        <article class="proj col-6 reveal">
+          <div class="projMedia" aria-hidden="true">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none">
+              <path d="M4 6h16v12H4V6Z" stroke="currentColor" stroke-width="2" opacity=".85"/>
+              <path d="M7 9h10M7 12h6M7 15h9" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity=".85"/>
+            </svg>
+            <div class="label">LLM / RAG</div>
+          </div>
+          <h3 class="projTitle">RAG for Clinical Notes & Claims Review</h3>
+          <p class="projDesc">
+            Built a retrieval-augmented pipeline using LangChain, Pinecone, and GPT-4 to extract insights from unstructured data,
+            reducing manual review by <b>40–50%</b>.
+          </p>
+          <div class="projLinks">
+            <a class="btn" href="#contact">Request details</a>
+          </div>
+        </article>
+
+        <article class="proj col-6 reveal">
+          <div class="projMedia" aria-hidden="true">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none">
+              <path d="M12 3v18" stroke="currentColor" stroke-width="2" opacity=".85"/>
+              <path d="M7 7l5-4 5 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity=".85"/>
+              <path d="M7 17h10" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity=".85"/>
+            </svg>
+            <div class="label">MLOps</div>
+          </div>
+          <h3 class="projTitle">End-to-End MLOps Pipeline (Real-time Scoring)</h3>
+          <p class="projDesc">
+            Built a production-grade real-time fraud pipeline with streaming ingestion, automated ML lifecycle,
+            containerized deployment, and <b>&lt;200ms</b> scoring latency.
+          </p>
+          <div class="projLinks">
+            <a class="btn btnGhost" href="https://github.com/laxman1400" target="_blank" rel="noopener">Add repo link</a>
+            <a class="btn" href="#contact">Get details</a>
+          </div>
+        </article>
+
+        <article class="proj col-6 reveal">
+          <div class="projMedia" aria-hidden="true">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none">
+              <path d="M4 17l6-6 4 4 6-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity=".85"/>
+              <path d="M4 19h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity=".85"/>
+            </svg>
+            <div class="label">Optimization</div>
+          </div>
+          <h3 class="projTitle">Logistics Optimization (Ferrellgas)</h3>
+          <p class="projDesc">
+            k-medoids + VRP optimization (OR-Tools) producing double-digit reductions in route distance and labor hours.
+            Built Power BI dashboards for SLA %, utilization, and routing efficiency.
+          </p>
+          <div class="projLinks">
+            <a class="btn" href="#contact">Request details</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ACHIEVEMENTS -->
+    <section class="section" id="achievements">
+      <div class="sectionHead">
+        <h2>Achievements</h2>
+        <div class="hint">Highlights that differentiate you.</div>
+      </div>
+
+      <div class="grid">
+        <div class="ach col-6 reveal">
+          <h3>Impact milestones</h3>
+          <ul>
+            <li><b>85% AUC</b> risk model performance (+25% vs baseline).</li>
+            <li>Scaled pipelines over <b>10TB+</b> EHR data weekly and <b>20M+</b> patient records.</li>
+            <li>Reduced reporting latency from <b>4h → 15m</b> via Snowflake optimization.</li>
+            <li>Delivered <b>$2.5M+</b> annual savings with reduced false positives (<b>22%</b>).</li>
+            <li>Reduced manual review workload by <b>40–50%</b> using RAG.</li>
+          </ul>
+        </div>
+
+        <div class="ach col-6 reveal">
+          <h3>Systems credibility</h3>
+          <ul>
+            <li>MLOps automation: CI/CD + MLflow + Docker + Jenkins + SageMaker.</li>
+            <li>Monitoring: Prometheus/Grafana drift detection + retraining triggers.</li>
+            <li>Experimentation: multivariate A/B testing (frequentist + Bayesian).</li>
+            <li>Stakeholder-ready communication via Tableau/Power BI.</li>
+          </ul>
+          <div class="ctaRow" style="margin-top:14px">
+            <a class="btn btnPrimary" href="https://1drv.ms/b/c/11b94d5d9e41e7f0/IQDCdAsrL2trTbo2wiQISCQcAb0jMHSlUX0-EwEHRAmKjSM?e=Hqa4nu" target="_blank" rel="noopener">Open Resume</a>
+            <a class="btn" href="#contact">Get In Touch</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section" id="contact">
+      <div class="sectionHead">
+        <h2>Contact</h2>
+        <div class="hint">My inbox is always open — questions, roles, or collaborations.</div>
+      </div>
+
+      <div class="card panel col-12 reveal">
+        <h3>Get in touch</h3>
+        <p>
+          If you're hiring for <b>Data Scientist</b> roles (Healthcare ML, Fraud, MLOps, LLM/RAG), I’m happy to chat.
+        </p>
+
+        <div class="ctaRow" style="margin-top:14px">
+          <a class="btn btnPrimary" href="mailto:laxmanakumar.ds@gmail.com">Email me</a>
+          <a class="btn" href="https://www.linkedin.com/in/kumarchoda/" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn" href="https://github.com/laxman1400" target="_blank" rel="noopener">GitHub</a>
+          <a class="btn" href="https://1drv.ms/b/c/11b94d5d9e41e7f0/IQDCdAsrL2trTbo2wiQISCQcAb0jMHSlUX0-EwEHRAmKjSM?e=Hqa4nu" target="_blank" rel="noopener">Resume</a>
+        </div>
+      </div>
+
+      <footer class="footer">
+        <div>© <span id="year"></span> Laxmana Kumar Chodapaneedi</div>
+        <div>Built on GitHub Pages · Single-file HTML</div>
+      </footer>
+    </section>
+  </main>
+
+  <script>
+    // ======================
+    // Experience data (tabs)
+    // ======================
+    const experience = {
+      thr: {
+        company: "Texas Health Resources",
+        role: "Data Scientist",
+        dates: "Jun 2024 — Present · Arlington, TX",
+        right: "Databricks · Spark · Snowflake · MLOps",
+        bullets: [
+          "Built and deployed ML models (LR, RF, XGBoost, NN) for risk stratification, readmission prediction, and chronic disease management; achieved 85% AUC (+25% vs baseline).",
+          "Engineered pipelines using PySpark/Spark/Databricks/Airflow processing 10TB+ EHR data and 20M+ patient records weekly; improved prediction accuracy by 18%.",
+          "Migrated legacy on-prem SQL workloads to Snowflake; optimized with clustering keys and materialized views; reduced reporting latency from 4 hours to 15 minutes.",
+          "Automated feature engineering, training/retraining, and deployment with CI/CD, MLflow, Docker, Jenkins, AWS SageMaker; reduced manual effort by 40% and maintained 99.9% uptime.",
+          "Ran multivariate A/B tests (frequentist + Bayesian) for AI triage and engagement; reduced ER wait times by 20% and increased preventative care bookings by 25%.",
+          "Built RAG systems (LangChain, GPT-4, Pinecone, HF Transformers) for unstructured clinical notes/claims; cut manual review by 40–50%; monitored drift using Prometheus/Grafana."
+        ],
+        tags: ["85% AUC", "10TB+ / wk", "99.9% uptime", "$2.5M+ savings", "RAG"],
+      },
+      hdfc: {
+        company: "HDFC Bank",
+        role: "Data Analyst",
+        dates: "Jun 2020 — Aug 2022 · Hyderabad, India",
+        right: "Python · SQL · SAS · Forecasting",
+        bullets: [
+          "Developed supervised models for credit risk and fraud detection; reduced default risk by 25%.",
+          "Applied time-series forecasting (ARIMA/SARIMA/LSTM) to improve revenue prediction and resource allocation efficiency by 30%.",
+          "Performed end-to-end data cleaning, wrangling, integration, and quality checks; improved model robustness by 12%.",
+          "Built ML pipelines using Python, Keras/TensorFlow, SQL, SAS, and Git; reduced deployment time by 30%.",
+          "Optimized SQL queries and stored procedures in MySQL to support real-time analytics and faster reporting."
+        ],
+        tags: ["Credit risk", "Forecasting", "SQL optimization", "Pipelines"],
+      }
+    };
+
+    const detail = document.getElementById("xpDetail");
+    const items = document.querySelectorAll(".xpItem");
+
+    function renderXP(key){
+      const x = experience[key];
+      detail.innerHTML = `
+        <div class="xpTop">
+          <div>
+            <p class="xpRole">${x.company} — ${x.role}</p>
+            <div class="xpMeta">${x.dates}</div>
+          </div>
+          <div class="xpMeta">${x.right}</div>
+        </div>
+        <ul class="bullets">
+          ${x.bullets.map(b => `<li>${b}</li>`).join("")}
+        </ul>
+        <div class="tags">
+          ${x.tags.map((t, i) => `<span class="tag ${i % 2 ? "alt" : ""}">${t}</span>`).join("")}
+        </div>
+      `;
+    }
+
+    items.forEach(btn => {
+      btn.addEventListener("click", () => {
+        items.forEach(b => {
+          b.classList.remove("active");
+          b.setAttribute("aria-selected","false");
+        });
+        btn.classList.add("active");
+        btn.setAttribute("aria-selected","true");
+        renderXP(btn.dataset.xp);
+      });
+    });
+
+    // initial render
+    renderXP("thr");
+
+    // ======================
+    // Smooth scroll
+    // ======================
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener("click", (e) => {
+        const id = a.getAttribute("href");
+        const el = document.querySelector(id);
+        if (!el) return;
+        e.preventDefault();
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    });
+
+    // ======================
+    // Reveal on scroll
+    // ======================
+    const els = Array.from(document.querySelectorAll(".reveal"));
+    const io = new IntersectionObserver((entries) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) entry.target.classList.add("visible");
+      }
+    }, { threshold: 0.14 });
+    els.forEach(el => io.observe(el));
+
+    // ======================
+    // Theme toggle (persist)
+    // ======================
+    const toggle = document.getElementById("themeToggle");
+    const icon = document.getElementById("themeIcon");
+
+    function setTheme(mode){
+      document.documentElement.setAttribute("data-theme", mode);
+      localStorage.setItem("theme", mode);
+
+      // swap icon
+      if (mode === "light"){
+        icon.innerHTML = '<path d="M12 18a6 6 0 1 0 0-12 6 6 0 0 0 0 12Z" stroke="currentColor" stroke-width="2"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>';
+      } else {
+        icon.innerHTML = '<path d="M21 13.3A8.2 8.2 0 0 1 10.7 3a7.2 7.2 0 1 0 10.3 10.3Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>';
+      }
+    }
+
+    const saved = localStorage.getItem("theme");
+    if (saved === "light" || saved === "dark") setTheme(saved);
+
+    toggle.addEventListener("click", () => {
+      const current = document.documentElement.getAttribute("data-theme") || "dark";
+      setTheme(current === "dark" ? "light" : "dark");
+    });
+
+    // Footer year
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
