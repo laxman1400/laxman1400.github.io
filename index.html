@@ -1,0 +1,487 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Portfolio of YOUR_NAME — Data Engineer / Analytics Engineer. Pipelines, dbt, Snowflake, AWS, Databricks." />
+  <title>YOUR_NAME — Data Engineer</title>
+
+  <!-- Fonts (free) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#0b0f14;
+      --card:#0f1720;
+      --text:#e7eef7;
+      --muted:#a9b7c6;
+      --line:rgba(255,255,255,.08);
+      --accent:#7dd3fc;
+      --accent2:#a78bfa;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius:18px;
+      --max:1120px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(1200px 800px at 12% 8%, rgba(125,211,252,.10), transparent 60%),
+        radial-gradient(900px 700px at 88% 18%, rgba(167,139,250,.10), transparent 55%),
+        radial-gradient(900px 700px at 55% 95%, rgba(125,211,252,.06), transparent 55%),
+        var(--bg);
+      line-height:1.6;
+    }
+    a{color:inherit; text-decoration:none}
+    a:hover{opacity:.92}
+    .wrap{max-width:var(--max); margin:0 auto; padding:28px 18px 70px}
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:14px; padding:10px 0 26px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:.2px;
+    }
+    .dot{
+      width:12px; height:12px; border-radius:50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: 0 0 0 6px rgba(125,211,252,.07);
+    }
+    .navlinks{display:flex; gap:14px; flex-wrap:wrap}
+    .pill{
+      padding:10px 12px; border:1px solid var(--line); border-radius:999px;
+      background: rgba(255,255,255,.03);
+      transition: transform .15s ease, background .15s ease, border-color .15s ease;
+      font-size:14px;
+    }
+    .pill:hover{transform: translateY(-1px); background: rgba(255,255,255,.05); border-color: rgba(255,255,255,.12)}
+    .hero{
+      display:grid; grid-template-columns: 1.2fr .8fr; gap:18px;
+      align-items:stretch;
+    }
+    @media (max-width: 860px){
+      .hero{grid-template-columns:1fr}
+    }
+    .card{
+      border:1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .heroMain{padding:28px}
+    .kicker{
+      display:inline-flex; align-items:center; gap:10px;
+      font-size:13px; color:var(--muted); letter-spacing:.2px;
+      padding:8px 12px; border-radius:999px; border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+    }
+    .kicker strong{color:var(--text); font-weight:600}
+    h1{
+      margin:16px 0 10px;
+      font-size:46px; line-height:1.1; letter-spacing:-1.2px;
+    }
+    @media (max-width: 520px){ h1{font-size:38px} }
+    .subtitle{color:var(--muted); font-size:16px; max-width:60ch}
+    .ctaRow{display:flex; gap:10px; flex-wrap:wrap; margin-top:18px}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding:12px 14px;
+      border-radius:12px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      transition: transform .15s ease, background .15s ease, border-color .15s ease;
+      font-weight:600;
+      font-size:14px;
+    }
+    .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.14)}
+    .btnPrimary{
+      border: none;
+      background: linear-gradient(135deg, rgba(125,211,252,.95), rgba(167,139,250,.95));
+      color:#061018;
+      box-shadow: 0 12px 30px rgba(125,211,252,.12);
+    }
+    .btnPrimary:hover{opacity:.96; transform: translateY(-1px)}
+    .heroSide{padding:22px}
+    .stats{
+      display:grid; grid-template-columns: 1fr 1fr; gap:10px;
+    }
+    .stat{
+      padding:14px; border-radius:14px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+    }
+    .stat .num{font-weight:800; font-size:18px}
+    .stat .lab{color:var(--muted); font-size:12px; margin-top:4px}
+    .stack{
+      margin-top:14px;
+      padding:14px; border-radius:14px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+    }
+    .chips{display:flex; gap:8px; flex-wrap:wrap; margin-top:10px}
+    .chip{
+      font-size:12px; color:var(--muted);
+      padding:7px 10px; border-radius:999px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.02);
+    }
+
+    .section{margin-top:26px}
+    .sectionHead{
+      display:flex; justify-content:space-between; align-items:flex-end; gap:12px; flex-wrap:wrap;
+      margin: 8px 0 12px;
+    }
+    h2{margin:0; font-size:18px; letter-spacing:.2px}
+    .hint{color:var(--muted); font-size:13px}
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap:14px;
+    }
+    .col-7{grid-column: span 7}
+    .col-5{grid-column: span 5}
+    .col-6{grid-column: span 6}
+    .col-12{grid-column: span 12}
+    @media (max-width: 900px){
+      .col-7,.col-5,.col-6{grid-column: span 12}
+    }
+
+    .panel{padding:18px}
+    .panel h3{margin:0 0 6px; font-size:16px}
+    .panel p{margin:0; color:var(--muted); font-size:14px}
+
+    .proj{
+      padding:18px;
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.03);
+      transition: transform .18s ease, border-color .18s ease, background .18s ease;
+    }
+    .proj:hover{transform: translateY(-2px); border-color: rgba(255,255,255,.14); background: rgba(255,255,255,.05)}
+    .projTop{display:flex; align-items:flex-start; justify-content:space-between; gap:12px}
+    .projTitle{margin:0; font-size:16px}
+    .tagRow{display:flex; gap:8px; flex-wrap:wrap; margin:10px 0 0}
+    .tag{
+      font-size:12px; color:#bfe9ff;
+      padding:6px 10px; border-radius:999px;
+      border:1px solid rgba(125,211,252,.18);
+      background: rgba(125,211,252,.06);
+    }
+    .tag.alt{
+      color:#d9ccff; border-color: rgba(167,139,250,.18); background: rgba(167,139,250,.06);
+    }
+    .bullets{margin:10px 0 0; padding-left:18px; color:var(--muted); font-size:14px}
+    .bullets li{margin:6px 0}
+    .projLinks{display:flex; gap:10px; flex-wrap:wrap; margin-top:12px}
+
+    .timelineItem{
+      padding:16px; border-radius: var(--radius);
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+    }
+    .tlTop{display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap}
+    .role{font-weight:700}
+    .meta{color:var(--muted); font-size:13px}
+    .mini{margin:10px 0 0; padding-left:18px; color:var(--muted); font-size:14px}
+
+    .footer{
+      margin-top:34px;
+      display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;
+      color: var(--muted);
+      font-size:13px;
+      padding-top:18px;
+      border-top:1px solid var(--line);
+    }
+    .fadeIn{opacity:0; transform: translateY(8px); animation: fade .7s ease forwards}
+    .d2{animation-delay:.08s} .d3{animation-delay:.16s} .d4{animation-delay:.24s}
+    @keyframes fade{to{opacity:1; transform:none}}
+    .sr-only{
+      position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden;
+      clip:rect(0,0,0,0); white-space:nowrap; border:0;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header class="nav">
+      <div class="brand">
+        <span class="dot" aria-hidden="true"></span>
+        <span>YOUR_NAME</span>
+      </div>
+      <nav class="navlinks" aria-label="Primary">
+        <a class="pill" href="#projects">Projects</a>
+        <a class="pill" href="#experience">Experience</a>
+        <a class="pill" href="#skills">Skills</a>
+        <a class="pill" href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="card heroMain fadeIn">
+        <div class="kicker">
+          <strong>Data Engineer</strong> · pipelines · dbt · cloud · analytics
+        </div>
+
+        <h1>Build data systems that teams trust.</h1>
+
+        <p class="subtitle">
+          I design and ship reliable, cost-efficient data platforms — from ingestion to
+          analytics-ready models — with measurable business impact.
+          <span class="sr-only">Portfolio overview.</span>
+        </p>
+
+        <div class="ctaRow">
+          <a class="btn btnPrimary" href="#projects">View Projects</a>
+          <a class="btn" href="https://www.linkedin.com/in/YOUR_LINKEDIN" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn" href="https://github.com/YOUR_GITHUB" target="_blank" rel="noopener">GitHub</a>
+          <a class="btn" href="YOUR_RESUME_LINK" target="_blank" rel="noopener">Resume</a>
+        </div>
+      </div>
+
+      <aside class="card heroSide fadeIn d2">
+        <div class="stats">
+          <div class="stat">
+            <div class="num">X+ yrs</div>
+            <div class="lab">Data engineering</div>
+          </div>
+          <div class="stat">
+            <div class="num">Y+</div>
+            <div class="lab">Pipelines / models shipped</div>
+          </div>
+          <div class="stat">
+            <div class="num">Z%</div>
+            <div class="lab">Latency / cost reduction</div>
+          </div>
+          <div class="stat">
+            <div class="num">N+</div>
+            <div class="lab">Stakeholders supported</div>
+          </div>
+        </div>
+
+        <div class="stack">
+          <div style="font-weight:700">Core stack</div>
+          <div class="chips" aria-label="Core technology stack">
+            <span class="chip">Python</span>
+            <span class="chip">SQL</span>
+            <span class="chip">dbt</span>
+            <span class="chip">Snowflake</span>
+            <span class="chip">Databricks</span>
+            <span class="chip">AWS / Azure</span>
+            <span class="chip">Airflow</span>
+            <span class="chip">Terraform</span>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="section" id="projects">
+      <div class="sectionHead">
+        <h2>Featured projects</h2>
+        <div class="hint">Impact-first case studies recruiters can scan in 30 seconds.</div>
+      </div>
+
+      <div class="grid">
+        <article class="proj col-6 fadeIn d2">
+          <div class="projTop">
+            <h3 class="projTitle">Customer 360 / Analytics-ready Data Mart</h3>
+            <span class="meta">Snowflake · dbt</span>
+          </div>
+          <div class="tagRow">
+            <span class="tag">Medallion</span>
+            <span class="tag alt">Data Quality</span>
+            <span class="tag">Performance</span>
+          </div>
+          <ul class="bullets">
+            <li><strong>Problem:</strong> Customer attributes scattered across systems; inconsistent definitions.</li>
+            <li><strong>What I built:</strong> Bronze → Silver → Gold models with standardized dimensions and metrics.</li>
+            <li><strong>Impact:</strong> Reduced analyst query time by <strong>~60%</strong>; enabled <strong>5+ teams</strong>.</li>
+          </ul>
+          <div class="projLinks">
+            <a class="btn" href="YOUR_PROJECT_LINK_1" target="_blank" rel="noopener">Repo / Write-up</a>
+            <a class="btn" href="#contact">Ask for demo</a>
+          </div>
+        </article>
+
+        <article class="proj col-6 fadeIn d3">
+          <div class="projTop">
+            <h3 class="projTitle">Claims Risk & Fraud Detection Pipeline</h3>
+            <span class="meta">Spark · AWS</span>
+          </div>
+          <div class="tagRow">
+            <span class="tag">Automation</span>
+            <span class="tag alt">Observability</span>
+            <span class="tag">Governance</span>
+          </div>
+          <ul class="bullets">
+            <li><strong>Problem:</strong> Manual checks + delayed signals for risk scoring.</li>
+            <li><strong>What I built:</strong> Automated ingestion + validation + curated datasets for downstream models.</li>
+            <li><strong>Impact:</strong> Cut processing time by <strong>~X%</strong> and improved reliability via tests/alerts.</li>
+          </ul>
+          <div class="projLinks">
+            <a class="btn" href="YOUR_PROJECT_LINK_2" target="_blank" rel="noopener">Repo / Write-up</a>
+            <a class="btn" href="#contact">Ask for demo</a>
+          </div>
+        </article>
+
+        <article class="proj col-6 fadeIn d4">
+          <div class="projTop">
+            <h3 class="projTitle">Streaming Events → Real-time Metrics</h3>
+            <span class="meta">Kafka · Databricks</span>
+          </div>
+          <div class="tagRow">
+            <span class="tag">Streaming</span>
+            <span class="tag alt">SLA</span>
+            <span class="tag">Cost</span>
+          </div>
+          <ul class="bullets">
+            <li><strong>Problem:</strong> Batch-only reporting; no near real-time visibility.</li>
+            <li><strong>What I built:</strong> Event ingestion + aggregation + serving tables with SLA monitoring.</li>
+            <li><strong>Impact:</strong> Delivered dashboards with <strong>&lt;15 min</strong> freshness and controlled spend.</li>
+          </ul>
+          <div class="projLinks">
+            <a class="btn" href="YOUR_PROJECT_LINK_3" target="_blank" rel="noopener">Repo / Write-up</a>
+          </div>
+        </article>
+
+        <article class="proj col-6 fadeIn d4">
+          <div class="projTop">
+            <h3 class="projTitle">Data Quality & CI for Analytics Engineering</h3>
+            <span class="meta">dbt · GitHub Actions</span>
+          </div>
+          <div class="tagRow">
+            <span class="tag">Testing</span>
+            <span class="tag alt">CI/CD</span>
+            <span class="tag">Trust</span>
+          </div>
+          <ul class="bullets">
+            <li><strong>Problem:</strong> Broken dashboards due to upstream schema changes.</li>
+            <li><strong>What I built:</strong> Automated tests (freshness, schema, uniqueness) + CI gates on PRs.</li>
+            <li><strong>Impact:</strong> Reduced incidents and created a “trust layer” for analytics consumers.</li>
+          </ul>
+          <div class="projLinks">
+            <a class="btn" href="YOUR_PROJECT_LINK_4" target="_blank" rel="noopener">Repo / Write-up</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="experience">
+      <div class="sectionHead">
+        <h2>Experience</h2>
+        <div class="hint">Tight, outcome-oriented bullets (no tool dumping).</div>
+      </div>
+
+      <div class="grid">
+        <div class="card panel col-7 fadeIn d2">
+          <div class="timelineItem">
+            <div class="tlTop">
+              <div>
+                <div class="role">Senior Data Engineer — COMPANY_NAME</div>
+                <div class="meta">Chicago, IL · YYYY–Present</div>
+              </div>
+              <div class="meta">Snowflake · dbt · Airflow</div>
+            </div>
+            <ul class="mini">
+              <li>Built curated data marts powering <strong>business-critical reporting</strong> and self-serve analytics.</li>
+              <li>Improved pipeline reliability with <strong>tests, monitoring, and SLAs</strong>.</li>
+              <li>Optimized performance/cost via clustering/partitioning and query tuning.</li>
+            </ul>
+          </div>
+
+          <div style="height:12px"></div>
+
+          <div class="timelineItem">
+            <div class="tlTop">
+              <div>
+                <div class="role">Data Engineer — COMPANY_NAME</div>
+                <div class="meta">YYYY–YYYY</div>
+              </div>
+              <div class="meta">AWS · Spark · SQL</div>
+            </div>
+            <ul class="mini">
+              <li>Designed ELT/ETL pipelines and standardized data definitions across domains.</li>
+              <li>Partnered with analytics/product teams to deliver <strong>decision-ready datasets</strong>.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card panel col-5 fadeIn d3" id="skills">
+          <h3>Skills snapshot</h3>
+          <p>What I use to ship production-grade data products.</p>
+
+          <div class="chips" style="margin-top:12px">
+            <span class="chip">Python (PySpark)</span>
+            <span class="chip">SQL</span>
+            <span class="chip">dbt</span>
+            <span class="chip">Snowflake</span>
+            <span class="chip">Databricks</span>
+            <span class="chip">AWS / Azure</span>
+            <span class="chip">Airflow</span>
+            <span class="chip">Kafka</span>
+            <span class="chip">Terraform</span>
+            <span class="chip">CI/CD</span>
+            <span class="chip">Data Quality</span>
+            <span class="chip">Dimensional Modeling</span>
+          </div>
+
+          <div style="height:14px"></div>
+
+          <h3>What I’m best at</h3>
+          <ul class="bullets">
+            <li>Turning messy sources into <strong>trusted analytics layers</strong>.</li>
+            <li>Reducing latency and cost without sacrificing reliability.</li>
+            <li>Building data products that teams actually adopt.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="sectionHead">
+        <h2>Contact</h2>
+        <div class="hint">Open to full-time / contract roles · Remote / Hybrid.</div>
+      </div>
+
+      <div class="grid">
+        <div class="card panel col-12 fadeIn d2">
+          <h3>Let’s build something reliable.</h3>
+          <p style="margin-top:6px">
+            Email: <a class="btn" style="display:inline-flex; margin-left:8px" href="mailto:YOUR_EMAIL">YOUR_EMAIL</a>
+            <span style="display:inline-block; width:10px"></span>
+            <a class="btn" href="https://www.linkedin.com/in/YOUR_LINKEDIN" target="_blank" rel="noopener">LinkedIn</a>
+            <a class="btn" href="https://github.com/YOUR_GITHUB" target="_blank" rel="noopener">GitHub</a>
+          </p>
+        </div>
+      </div>
+
+      <footer class="footer">
+        <div>© <span id="year"></span> YOUR_NAME</div>
+        <div>Built with GitHub Pages · Single-file HTML</div>
+      </footer>
+    </section>
+  </div>
+
+  <script>
+    // Update footer year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener("click", (e) => {
+        const id = a.getAttribute("href");
+        if (!id || id === "#") return;
+        const el = document.querySelector(id);
+        if (!el) return;
+        e.preventDefault();
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    });
+  </script>
+</body>
+</html>
